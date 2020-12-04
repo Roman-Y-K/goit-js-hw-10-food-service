@@ -14,35 +14,35 @@ savedBodyTheme();
 
 function changeBodyTheme() {
     if (checkboxRef.checked) {
-        console.log(1);
+       
         onDarkTheme();
     } else
-        onLightTheme();
+       {onLightTheme()} ;
 };
 
 
 
 function onDarkTheme() {
     bodyRef.classList.replace(Theme.LIGHT, Theme.DARK)  && localStorage.setItem('theme', Theme.DARK);
-    console.log(2);
+
     
 };
 
 function onLightTheme() {
-    console.log(3);
+  
      bodyRef.classList.replace(Theme.DARK, Theme.LIGHT)  && localStorage.setItem('theme', Theme.LIGHT);
 };
 
 function savedBodyTheme() {
     const savedTheme = localStorage.getItem('theme');
-    console.log(4);
+   
     
     bodyRef.classList.replace(Theme.LIGHT, savedTheme);
-    console.log(5);
+ 
     
     if (bodyRef.classList.contains(Theme.DARK)) { 
         checkboxRef.checked = true;
-        console.log(6);
+     
     }
 };
 
