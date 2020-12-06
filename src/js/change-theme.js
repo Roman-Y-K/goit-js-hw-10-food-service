@@ -13,21 +13,22 @@ bodyRef.classList.add(Theme.LIGHT);
 
 function changeBodyTheme() {
     if (checkboxRef.checked) {
-       onDarkTheme();
+        onChangeTheme(Theme.LIGHT, Theme.DARK);
     } else
-       onLightTheme();
+        onChangeTheme(Theme.DARK, Theme.LIGHT);
 };
 
 savedBodyTheme();
 
 
-function onDarkTheme() {
-    bodyRef.classList.replace( Theme.LIGHT, Theme.DARK), setLocalStorageDark();
+function onChangeTheme(oldTheme, newTheme) {
+    bodyRef.classList.replace(oldTheme, newTheme);
+    setLocalStorageTheme(newTheme);
     
 };
 
-function onLightTheme() {
-    bodyRef.classList.replace(Theme.DARK, Theme.LIGHT), setLocalStorageLight();
+function setLocalStorageTheme(newTheme) {
+    localStorage.setItem('theme', newTheme);
 };
 
 function savedBodyTheme() {
@@ -36,20 +37,9 @@ function savedBodyTheme() {
    
     if (savedTheme === Theme.DARK) {
         bodyRef.classList.replace(Theme.LIGHT, savedTheme);
+        checkboxRef.checked = true;
          
     };
-
-    if (bodyRef.classList.contains(Theme.DARK)) {
-        checkboxRef.checked = true;
-     
-    };
 };
 
-function setLocalStorageDark() {
-    localStorage.setItem('theme', Theme.DARK);
-};
 
-function setLocalStorageLight() {
-    localStorage.setItem('theme', Theme.LIGHT);
-    
-}
